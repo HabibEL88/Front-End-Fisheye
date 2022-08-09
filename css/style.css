@@ -47,4 +47,19 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 15px;
+}
+
+.photographer_section article span {
+    color: #901C1C;
+}
+
+.photographer_section article p {
+    /*color: #000000;*/
+    margin: 5px 0px;;
+}
+
+.photographer_section article .price{
+    color: #757575;
 }
