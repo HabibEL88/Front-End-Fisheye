@@ -1,9 +1,11 @@
 function photographerFactory(data) {
+    // Récupérer les autres propriétés
     const { name, portrait } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
     function getUserCardDOM() {
+        // Modifier pour avoir quelque chose qui ressemble aux maquettes
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
@@ -13,5 +15,6 @@ function photographerFactory(data) {
         article.appendChild(h2);
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    return getUserCardDOM();
 }
