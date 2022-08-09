@@ -1,8 +1,8 @@
 function photographerFactory(data) {
     // Récupérer les autres propriétés
-    const {  id, name, portrait, city, country, tagline, price } = data;
+    const {  name, id, city, country, tagline, price, portrait } = data;
 
-    const picture = `assets/photographers/photographers_id_photos${portrait}`;
+    const picture = `assets/photographers/photographers_id_photos/${portrait}`;
 
     //affichage des photographes
     function getUserCardDOM() {
@@ -14,7 +14,7 @@ function photographerFactory(data) {
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const citycountry = document.createElement("span");
-        citycountry.textContent = city.concat(",", country);
+        citycountry.textContent = city.concat(", ", country);
         const slogan = document.createElement("p");
         slogan.textContent = tagline;
         const priceDay = document.createElement("div");
