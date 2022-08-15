@@ -1,9 +1,8 @@
     
     async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
-        const f = fetch("/data/photographers.json");
-        const rawData = await f;
-        const jsonData = await rawData.json();
+        const f = await fetch("/data/photographers.json");
+        const jsonData = await f.json();
         console.debug(jsonData);
 /*
 J'ai le fichier json avec les données de chaque photographe.
@@ -24,7 +23,7 @@ Puis, je vais l'utiliser pour l'intégrer dans l'array en-dessous
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
         photographers.forEach((photographer) => {
-            const userCardDOM = photographerFactory(photographer);
+            const userCardDOM = photographerFactory(photographer, "index");
             photographersSection.appendChild(userCardDOM);
         });
     };
