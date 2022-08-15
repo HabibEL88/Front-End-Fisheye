@@ -1,37 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
     <title>Fisheye - photographe </title>
+    <script src="scripts/utils/contactForm.js" defer></script>
+    <script src="scripts/pages/photographer.js"></script>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"> 
+        <img src="assets/images/logo.png" class="logo" alt="FishEye logo and Hompage" aria-label="Logo Fisheye" />        
+      </a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
+
+    <!--------------------------Filtre de trie---------------------->
+    <nav id="filter">
+      <label class="tier-txt" for="list-trier">Trier par</label>
+      <select id="list-trier" onchange="trier">
+        <option disabled selected>---</option> /* au choix pour afficher sans choix*/
+        <option>Popularité</option>
+        <option>Date</option>
+        <option>Titre</option>
+      </select>
+    </nav>
+
+    <!--------------------------GALLERY PHOTOGRAPHER---------------------->
+      <section id="photographer_gallery"></section>
+
+    <!--------------------------GALLERY PHOTOGRAPHER---------------------->
+    <section tabindex="1" id="popup">
+      <div class="popup_txt">
+        <span class="total_likes"></span>
+        <span class="price_day" ></span>
+      </div>
+    </section>
+
+<!--------------------------FORMULAIRE---------------------->
     <div id="contact_modal">
 			<div class="modal">
 				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <div id="photographer_name">
+            <span>Contactez-moi</span>  
+            <span id="photographer_name"></span>  
+          </div>
+          <img tabindex="0" id="close_modal" src="assets/icons/close.svg" alt="close contact form" aria-label="Close Contact Formulaire"/>
+
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+				<form id="contact_form">
+          <div>
+            <label for="firstName">Prénom</label>
+            <input type="text" name="firstName" id="firstName" required pattern="[A-Za-z -]{1,32}">
+            
+            <label for="lastName">Nom</label>
+            <input type="text" name="lastName" id="lastName" required pattern="[A-Za-z -]{1,32}">
+            
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+            
+            <label for="textArea">Votre message</label>
+            <textarea form="contactForm" name="textArea" id="textArea" required minlength="20"></textarea>
+          </div>
+
+          <button id="submitForm" type="submit" class="contact_button"aria-label="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    
   </body>
 </html>

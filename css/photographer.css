@@ -1,11 +1,18 @@
+/* *Header PAGE PHOTOGRAPHE */
+
 #contact_modal {
     display: none;
+    position: relative;
+    justify-content: center;
 }
 
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .contact_button {
@@ -21,10 +28,12 @@
     cursor: pointer;
 }
 
+/* *FORMULAIRE */
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 669px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,4 +82,20 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+/*FILTRE*/
+#filter {
+    margin: 25px 100 px;
+}
+#filter select{
+    width: 150px;
+    height: 60px;
+    padding: 0 5px;
+    background-color: #901c1c;
+    color: #ffffff;
+    border-radius: 5px 5px 0 0;
+    border: none;
+    font-size: 18px;
+
 }
