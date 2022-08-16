@@ -5,10 +5,10 @@ body {
     margin: 0;
 }
 
-a  {
+/*a  {
     color: inherit;
     text-decoration: inherit;
-}
+}*/
 
 header {
     display: flex;
@@ -16,23 +16,24 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin: 20px 100px 0;
+    
 }
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
+    margin-right: 2em/*100px*/;
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    height: 50px;;
 }
 
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin-top: 100px auto;
 }
 
 .photographer_section article {
@@ -41,6 +42,11 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align:center
+}
+
+.photographer_section article a{
+    text-decoration: none;
 }
 
 .photographer_section article h2 {
@@ -49,9 +55,17 @@ h1 {
     margin-bottom: 10px;
 }
 
-.photographer_section article img {
+.photographer_section article a div{
+    display: flex;
+    margin: auto;
     height: 200px;
     width: 200px;
+}
+
+
+.photographer_section article a div img {
+    height: 100%;
+    width: 100%;
     border-radius: 50%;
     box-shadow: 2px 2px 15px;
     object-fit: cover;
@@ -59,7 +73,6 @@ h1 {
 
 .photographer_section article span {
     color: #901C1C;
-    font-weight: bold;
 }
 
 .photographer_section article p {
