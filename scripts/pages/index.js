@@ -22,12 +22,13 @@ Puis, je vais l'utiliser pour l'intégrer dans l'array en-dessous
     }
 
     async function displayData(photographers) {
-        const photographersSection = document.querySelector(".photographer_section");
-        photographers.forEach((photographer) => {
-            const userCardDOM = photographerFactory(photographer);
-            photographersSection.appendChild(userCardDOM);
-        });
-    };
+      const photographersSection = document.querySelector(".photographer_section");
+      photographers.forEach((photographer) => {
+          
+          const userCardDOM = photographerFactory(photographer, "index");
+          photographersSection.appendChild(userCardDOM);
+      });
+  };
 
     async function init() {
         // Récupère les datas des photographes
