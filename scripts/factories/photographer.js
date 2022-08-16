@@ -36,22 +36,13 @@ function photographerFactory(data, template) {
 
     function getUserDetailsDOM() {
         // GetElementById => remplacer ce que je peux remplacer
-        const header = document.querySelector(".photograph-header");
-        const newDiv = document.createElement("div");
-        header.prepend(newDiv);
 
-        const photographerName = document.createElement("h2");
-        newDiv.appendChild(photographerName);
-        photographerName.setAttribute("tabIndex", 0);
-        photographerName.setAttribute("aria-label", name);
-        photographerName.textContent = name;
         // Construire mon carousel de media
     }
-    return {getUserCardDOM, getUserDetailsDOM}
 
-    /*if (template === "details")
+    if (template === "details")
         return getUserDetailsDOM();
     else if (template === "index")
         return getUserCardDOM();
-    return null;*/
+    return null;
 }
