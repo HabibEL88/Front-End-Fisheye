@@ -34,20 +34,12 @@ function photographerFactory(data, template) {
         return (article);
     }
 
-    
-
-    if (template === "details")
-        return getUserDetailsDOM();
-    else if (template === "index")
-        return getUserCardDOM();
-    return null;
-
     function getUserDetailsDOM() {
         // GetElementById => remplacer ce que je peux remplacer
         const header = document.querySelector(".photograph-header");
         const newDiv = document.createElement("div");
         header.prepend(newDiv);
-    
+
         const photographerName = document.createElement("h2");
         newDiv.appendChild(photographerName);
         photographerName.setAttribute("tabIndex", 0);
@@ -56,4 +48,10 @@ function photographerFactory(data, template) {
         // Construire mon carousel de media
     }
     return {getUserCardDOM, getUserDetailsDOM}
+
+    /*if (template === "details")
+        return getUserDetailsDOM();
+    else if (template === "index")
+        return getUserCardDOM();
+    return null;*/
 }
