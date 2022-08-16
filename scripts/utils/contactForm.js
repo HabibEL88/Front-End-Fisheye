@@ -4,7 +4,7 @@ function displayModal() {
 }
 
 let btnContact = document
-  .getElementById("contact_button")
+  .getElementById("contact")
   .addEventListener("click", displayModal);
 
 function closeModal() {
