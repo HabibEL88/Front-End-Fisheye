@@ -49,19 +49,15 @@ myInputs.forEach((myInputs) => {
 
 // Ouverture de la modale
 
-
-
-
-
-
-
-
-
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+  modal.style.display = "block";
+  main.style.filter = "blur(5px)";
+  submitBtn.focus();
+  modal.setAttribute("aria-hidden", "false");
+  main.setAttribute("aria-hidden", "true");
 }
 
+// Fermeture de la modale 
 let btnContact = document
   .getElementById("contact")
   .addEventListener("click", displayModal);
