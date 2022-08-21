@@ -20,57 +20,38 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+      <div class="photograph-medias"></div>
     </main>
 
-    <!--------------------------Filtre de trie---------------------->
-    <nav id="filter">
-      <label class="tier-txt" for="list-trier">Trier par</label>
-      <select id="list-trier" onchange="trier">
-        <option disabled selected>---</option> /* au choix pour afficher sans choix*/
-        <option>Popularité</option>
-        <option>Date</option>
-        <option>Titre</option>
-      </select>
-    </nav>
-
-    <!--------------------------GALLERY PHOTOGRAPHER---------------------->
-      <section id="photographer_gallery"></section>
-
-    <!--------------------------GALLERY PHOTOGRAPHER---------------------->
-    <section tabindex="1" id="popup">
-      <div class="popup_txt">
-        <span class="total_likes"></span>
-        <span class="price_day" ></span>
-      </div>
-    </section>
-
-<!--------------------------FORMULAIRE---------------------->
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog" aria-describedby="Envoyer un message">
 			<div class="modal">
-				<header>
-          <div id="photographer_name">
-            <span>Contactez-moi</span>  
-            <span id="photographer_name"></span>  
-          </div>
-          <img tabindex="0" id="close_modal" src="assets/icons/close.svg" alt="close contact form" aria-label="Close Contact Formulaire"/>
+   
+<!--------------------------FORMULAIRE---------------------->
+<div class="contact-header">
+  <h2 class="contact-title">Contactez-moi</h2>
+  <img src="assets/icons/close.svg" onclick="closeModal()" class="close-modale" alt="Icône Fermer"/>
+</div>
+    
+				<form action="index.html" name="form">
+          <div role="group" aria-labelledby="Coordonnées">
+            <label for="firstname" class="firstname">Prénom</label> 
+            <input type="text" name="firstname" id="firstname" required pattern="[A-Za-z -]{1,32}"  class="input-form" aria-required="true"/>
+            <span class="error-firstname"></span>
 
-        </header>
-				<form id="contact_form">
-          <div>
-            <label for="firstName">Prénom</label>
-            <input type="text" name="firstName" id="firstName" required pattern="[A-Za-z -]{1,32}">
-            
-            <label for="lastName">Nom</label>
-            <input type="text" name="lastName" id="lastName" required pattern="[A-Za-z -]{1,32}">
-            
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-            
-            <label for="textArea">Votre message</label>
-            <textarea form="contactForm" name="textArea" id="textArea" required minlength="20"></textarea>
+            <label for="lastname" class="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" required pattern="[A-Za-z -]{1,32}" class="input-form" aria-required="true">
+            <span class="error-lastname"></span>
+
+            <label for="email" class="email">Email</label>
+            <input type="text" name="email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" class="input-form" aria-required="true">
+            <span class="error-email"></span>
+
+            <label for="textarea" class="textarea">Votre message</label>
+            <textarea name="textarea" id="textarea" required minlength="20" aria-required="true"></textarea>
+            <span class="error-textarea"></span>
           </div>
 
-          <button id="submitForm" type="submit" class="contact_button"aria-label="Send">Envoyer</button>
+          <button class="contact_button submit-btn" type="submit">Envoyer</button>
 				</form>
 			</div>
 		</div>
