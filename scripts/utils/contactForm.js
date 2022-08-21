@@ -65,3 +65,14 @@ function closeModal() {
   main.setAttribute("aria-hidden", "false");
 }
 
+// focus sur le bouton de fermeture de la modale
+// afin de fermer avec la touche Echap
+
+/*
+$(document).on('keydown', e => {
+  const keyCode = e.keyCode ? e.keyCode : e.which
+
+  if ($modal.attr('aria-hidden') == 'false' && keyCode === 27) {
+      onCloseModal()
+  }
+})*/
