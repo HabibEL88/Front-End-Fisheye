@@ -22,11 +22,20 @@ const errorLastname             = document.querySelector(".error-lastname");
 const errorEmail                = document.querySelector(".error-email");
 const errorTextarea             = document.querySelector(".error-textarea");
 
+contactTitle.style.fontSize     = "50px";
 
+closeImg.style.width            = "50px";
+closeImg.style.cursor           = "pointer";
 
+textarea.style.width            = "100%";
+textarea.style.height           = "150px";
 
+submitBtn.style.marginTop       = "20px";
 
-
+label.forEach((label) => {
+  label.style.fontSize        = "30px";
+  label.style.color           = "#312E2E";
+});
 
 
 
