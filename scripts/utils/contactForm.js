@@ -76,3 +76,130 @@ $(document).on('keydown', e => {
       onCloseModal()
   }
 })*/
+
+// Insertion du nom du photographe dans la modale
+/*function contactFactory(data) {
+  const { name } = data;
+
+  function getContactCardDOM() {
+      const modal = document.querySelector(".modal");
+
+      const photographerName = document.createElement('p');
+          photographerName.textContent = name;
+          photographerName.style.order = "2";
+          photographerName.style.fontSize = "50px";
+          photographerName.style.textAlign = "left";
+          photographerName.style.marginBottom = "20px";
+
+      
+      modal.appendChild(photographerName);
+  }
+
+  return { name, getContactCardDOM }
+}
+*/
+
+// Fonction pour Validation du formulaire 
+
+form.addEventListener("submit", (e) => {
+  let isInputFirstnameValid = false;
+  let isInputLastnameValid = false;
+  let isInputEmailValid = false;
+  let isTextareaValid = false;
+
+
+  // Validation du champs Prénom
+
+  if(inputFirstname.value == "") {
+    inputFirstname.style.border = "solid 5px #901C1C";
+    errorFirstname.textContent = "Veuillez entrer votre prénom";
+    errorFirstname.style.color = "#901C1C";
+    inputFirstname.setAttribute("aria-invalid", "false");
+    isInputFirstnameValid = false;
+    e.preventDefault();
+}
+else {
+  inputFirstname.setAttribute("aria-invalid", "true");
+  inputFirstname.style.border = "";
+  errorFirstname.textContent = "";
+  errorFirstname.style.color = "";
+  isInputFirstnameValid = true;
+  
+}
+
+
+// Validation du champs Nom 
+
+if(inputLastname.value == "") {
+  inputLastname.style.border = "solid 5px #901C1C";
+  errorLastname.textContent = "Veuillez entrer votre nom";
+  errorLastname.style.color = "#901C1C";
+  inputLastname.setAttribute("aria-invalid", "false");
+  isInputLastnameValid = false;
+  e.preventDefault();
+}
+else {
+  inputLastname.setAttribute("aria-invalid", "true");
+  inputLastname.style.border = "";
+  errorLastname.textContent = "";
+  errorLastname.style.color = "";
+
+  isInputLastnameValid = true;
+}
+
+
+// Validation du champs E-mail 
+
+if(inputEmail.value == "") {
+  inputEmail.style.border = "solid 5px #901C1C";
+  errorEmail.textContent = "Veuillez entrer un e-mail valide";
+  errorEmail.style.color = "#901C1C";
+  inputEmail.setAttribute("aria-invalid", "false");
+  isInputEmailValid = false ;
+  e.preventDefault();
+}
+else {
+  inputEmail.setAttribute("aria-invalid", "true");
+  inputEmail.style.border = "";
+  errorEmail.textContent = "";
+  errorEmail.style.color = "";
+  isInputEmailValid = true;
+}
+
+
+// Validation du champs Message
+
+if(textarea.value == "") {
+  textarea.style.border = "solid 5px #901C1C";
+  errorTextarea.textContent = "Veuillez entrer votre message";
+  errorTextarea.style.color = "#901C1C";
+  textarea.setAttribute("aria-invalid", "false");
+  isTextareaValid = false ;
+  e.preventDefault();
+}
+else {
+  textarea.setAttribute("aria-invalid", "true");
+  textarea.style.border = "";
+  errorTextarea.textContent = "";
+  errorTextarea.style.color = "";
+  isTextareaValid = true;
+}
+
+if(isInputFirstnameValid &&
+  isInputLastnameValid &&
+  isInputEmailValid &&
+  isTextareaValid) {
+      form.reset();
+  }
+});
+
+
+// Envoie des données du formulaire dans la console 
+
+submitBtn.addEventListener("click", () => {
+console.log(inputLastname.value);
+console.log(inputFirstname.value);
+console.log(inputLastname.value);
+console.log(inputEmail.value);
+console.log(textarea.value);
+})
