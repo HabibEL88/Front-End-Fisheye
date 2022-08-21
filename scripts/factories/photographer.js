@@ -34,6 +34,12 @@ function photographerFactory(data, template) {
         return (article);
     }
 
+    function getUserDetailsDOM() {
+        // GetElementById => remplacer ce que je peux remplacer
+
+        // Construire mon carousel de media
+    }
+
     if (template === "details")
         return getUserDetailsDOM();
     else if (template === "index")
