@@ -58,16 +58,10 @@ function displayModal() {
 }
 
 // Fermeture de la modale 
-let btnContact = document
-  .getElementById("contact")
-  .addEventListener("click", displayModal);
-
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+  modal.style.display = "none";
+  main.style.filter = "blur(0px)";
+  modal.setAttribute("aria-hidden", "true");
+  main.setAttribute("aria-hidden", "false");
 }
 
-let btnCloseModal = document.getElementById("close_modal");
-
-btnCloseModal.focus();
-btnCloseModal.addEventListener("click", closeModal);
