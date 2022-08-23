@@ -92,10 +92,12 @@ form input {
 }
 
 .previous {
-    position: "absolute";
-    top: "47%";
-    left: "16%"; 
-    font-size: "40px"; 
-    color: "#901C1C";
-    cursor: "pointer";
+    position: absolute;
+    top: 47%;
+    left: 16%; 
+    font-size: 40px; 
+    color: #901C1C;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
 }

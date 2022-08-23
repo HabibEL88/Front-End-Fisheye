@@ -10,8 +10,7 @@ function lightboxFactory(data) {
         const container = document.createElement("div");
         const titleMedia = document.createElement("p");
 
-        previous.innerHTML = '<i class="fas fa-chevron-left" title="image précédente"></i>';
-        previous.classList.add = "previous";
+        previous.className = "previous fas fa-chevron-left";
         previous.setAttribute("title", "Image précédente");
 
         next.innerHTML = '<i class="fas fa-chevron-right" title="image suivante"></i>';
@@ -139,28 +138,29 @@ function lightboxFactory(data) {
                 }
 
                 // Accessibilité Lightbox
-                /*window.addEventListener("keydown", (e) => {
-                    const keyCode = e.keyCode ? e.keyCode : e.which;
+                window.addEventListener("keydown", (e) => {
+                    const keyCode = e.key;
+                    if (!keyCode) return;
                 
-                    if (lightbox.style.display = "block" && keyCode === 27) {
-                        lightbox.style.display = "none";
+                    if (lightbox.style.display = "block") {
+                        if (keyCode === 27) {
+                            lightbox.style.display = "none";
+                        }
+                        else if (keyCode === 37) {
+                            selectedMedia.classList.remove("selected");
+                            i--;
+                            selectedMedia = medias[i].querySelector(".currentMedia");
+                            selectedMedia.classList.add("selected");
+                            displayMedia();
+                        }
+                        else if (keyCode === 39) {
+                            selectedMedia.classList.remove("selected");
+                            i++;
+                            selectedMedia = medias[i].querySelector(".currentMedia");
+                            displayMedia();
+                        }
                     }
-
-                    if (lightbox.style.display = "block" && keyCode === 37) {
-                        selectedMedia.classList.remove("selected");
-                        i--;
-                        selectedMedia = medias[i].querySelector(".currentMedia");
-                        selectedMedia.classList.add("selected");
-                        displayMedia();
-                    }
-
-                    if (lightbox.style.display = "block" && keyCode === 39) {
-                        selectedMedia.classList.remove("selected");
-                        i++;
-                        selectedMedia = medias[i].querySelector(".currentMedia");
-                        displayMedia();
-                    }
-                });*/
+                });
 
                 closeLightbox();
                    
