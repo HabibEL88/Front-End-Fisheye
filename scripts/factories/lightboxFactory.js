@@ -1,4 +1,3 @@
-// AFFICHE LA LIGHTBOX 
 function lightboxFactory(data) {
     const { image , video, title } = data;
 
@@ -9,17 +8,9 @@ function lightboxFactory(data) {
         const next = document.createElement("i");
         const closeBtn = document.createElement("i");
         const container = document.createElement("div");
-        const img = document.createElement("img");
-        const vid = document.createElement("video");
         const titleMedia = document.createElement("p");
 
         previous.innerHTML = '<i class="fas fa-chevron-left" title="image précédente"></i>';
-        previous.style.position = "absolute";
-        previous.style.top = "47%";
-        previous.style.left = "16%"; 
-        previous.style.fontSize = "40px"; 
-        previous.style.color = "#901C1C";
-        previous.style.cursor = "pointer";
         previous.classList.add = "previous";
         previous.setAttribute("title", "Image précédente");
 
@@ -51,19 +42,21 @@ function lightboxFactory(data) {
         container.style.left = "0"; 
         container.style.right = "0";
 
-        img.style.width = "100%";
-        img.style.height = "100%";
-        img.style.borderRadius = "5px";
-        img.style.objectFit = "cover";
-        img.setAttribute("src", "");
-        img.setAttribute("alt", "");
-
-        vid.style.width = "100%";
-        vid.style.height = "100%";
-        vid.style.borderRadius = "5px";
-        vid.style.objectFit = "cover";
-        vid.setAttribute("src", "");
-        vid.setAttribute("alt", "");
+        const img = document.createElement("img");
+        const vid = document.createElement("video");
+            img.style.width = "100%";
+            img.style.height = "100%";
+            img.style.borderRadius = "5px";
+            img.style.objectFit = "cover";
+            img.setAttribute("src", "");
+            img.setAttribute("alt", "");
+            container.appendChild(img);
+            vid.style.width = "100%";
+            vid.style.height = "100%";
+            vid.style.borderRadius = "5px";
+            vid.style.objectFit = "cover";
+            vid.setAttribute("src", "");
+            vid.setAttribute("alt", "");
     
         titleMedia.style.fontSize = "24px";
         titleMedia.style.color = "#901C1C";
@@ -79,7 +72,7 @@ function lightboxFactory(data) {
         }
 
         const medias = document.querySelectorAll(".galleryLink");
-
+        console.debug(medias);
         for (let i = 0; i < medias.length; i++) {
             mediaLink = medias[i];
 
@@ -175,8 +168,6 @@ function lightboxFactory(data) {
         }
         
         lightbox.appendChild(container);
-        container.appendChild(img);
-        container.appendChild(vid);
         container.appendChild(titleMedia);
         lightbox.appendChild(previous);
         lightbox.appendChild(next);

@@ -90,3 +90,12 @@ form input {
     flex-wrap: wrap;
     justify-content: space-between;
 }
+
+.previous {
+    position: "absolute";
+    top: "47%";
+    left: "16%"; 
+    font-size: "40px"; 
+    color: "#901C1C";
+    cursor: "pointer";
+}

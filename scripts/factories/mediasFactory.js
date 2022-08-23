@@ -8,24 +8,22 @@ function mediasFactory(data) {
     function getMediasCardDOM() {
 
         const figure = document.createElement('figure');
-        const mediaLink = document.createElement('a');
-       
-        const mediaCaption = document.createElement('figcaption');
+        
         const mediaTitle = document.createElement('p');
         const mediaLikes = document.createElement("div");
         const numberOfLikes = document.createElement("input");
         const buttonHeart = document.createElement("button");
-
+        
         figure.style.marginBottom = "40px";
         figure.style.width = "350px";
         
+        const mediaLink = document.createElement('button');
         mediaLink.classList.add("galleryLink");
-        mediaLink.setAttribute("href", "#");
         mediaLink.style.width = "350px";
         mediaLink.style.height = "300px";
+        // mediaLink.setAttribute('onClick', 'displayLightbox()');
         
-        
-
+        const mediaCaption = document.createElement('figcaption');
         mediaCaption.classList.add("figcaption"); 
         mediaCaption.style.display = "flex";
         mediaCaption.style.justifyContent = "space-between";
