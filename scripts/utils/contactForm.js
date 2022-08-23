@@ -78,7 +78,7 @@ $(document).on('keydown', e => {
 })*/
 
 // Insertion du nom du photographe dans la modale
-/*function contactFactory(data) {
+function contactFactory(data) {
   const { name } = data;
 
   function getContactCardDOM() {
@@ -97,7 +97,7 @@ $(document).on('keydown', e => {
 
   return { name, getContactCardDOM }
 }
-*/
+
 
 // Fonction pour Validation du formulaire 
 
