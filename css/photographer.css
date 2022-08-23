@@ -84,18 +84,9 @@ form input {
     border-radius: 5px;
 }
 
-/*FILTRE*/
-#filter {
-    margin: 25px 100 px;
-}
-#filter select{
-    width: 150px;
-    height: 60px;
-    padding: 0 5px;
-    background-color: #901c1c;
-    color: #ffffff;
-    border-radius: 5px 5px 0 0;
-    border: none;
-    font-size: 18px;
-
+.photograph-medias {
+    margin: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }

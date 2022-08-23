@@ -1,17 +1,30 @@
 //Mettre le code JavaScript lié à la page photographer.html
 
+function getProfile() { 
+  fetch("data/photographers.json")
+  .then((res) => res.json())
+  .then((data) => {
+      const photographers = data.photographers;
+      const photographHeader = document.querySelector(".photograph-header");
 
-function init() {
-  const params = new URLSearchParams(window.location.search);
-  const photographerId = params.get("id");
+      photographers.forEach((photographer) => {
+          // Verifie si l'url contient l'id du photographe
+          let verifyUrl = new URLSearchParams(window.location.search);
+          verifyUrl.has(photographer.id);
+          let param = verifyUrl.get('id');
 
-  console.log(photographerId);
+          if (photographer.id == param) {
+              // Affiche le profil du photographe
+              const photographerModel = profileFactory(photographer);
+              const userCardDOM = photographerModel.getUserCardDOM();
+              photographHeader.appendChild(userCardDOM);
 
-  // Fetch le .json
-  // Récupérer uniquement la donnée du photographe avec l'id X
-  // Créer une fonction displayData
-  // Appeler le factory avec template "details"
-  // Remplir la fonction factory correspondante pour modifier la donnée et construire la grille de médias
+              // Affiche le formulaire de contact du photographe
+              const contactModel = contactFactory(photographer);
+              contactModel.getContactCardDOM();
+          }
+      });
+  })
 }
 
-init();
+getProfile();
