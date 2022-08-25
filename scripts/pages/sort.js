@@ -111,6 +111,10 @@ function getSortFactory() {
     });
 
     // Tri des medias par nombre de likes 
+    popularity.addEventListener("click", () => {
+        pictures = pictures.sort((a1, a2) => a2.likes - a1.likes);
+        buildGallery(pictures);
+    })
    
 
     main.appendChild(sortContainer);

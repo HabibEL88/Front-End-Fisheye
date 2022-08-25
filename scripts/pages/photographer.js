@@ -7,6 +7,7 @@ function buildGallery(pictures) {
         const mediaCardDOM = mediaModel.getMediasCardDOM();
         photographMedias.appendChild(mediaCardDOM);
     });
+    likesCounter();
 }
 
 function getProfile() { 
