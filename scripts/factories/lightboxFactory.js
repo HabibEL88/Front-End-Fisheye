@@ -12,14 +12,14 @@ function lightboxFactory(data) {
 
         /*previous.className = "previous fas fa-chevron-left";
         previous.setAttribute("title", "Image précédente");*/
-        previous.innerHTML          = '<i class="fas fa-chevron-left" title="image précédente"></i>';
-        previous.style.position     = "absolute";
-        previous.style.top          = "47%";
-        previous.style.left         = "16%"; 
-        previous.style.fontSize     = "40px"; 
-        previous.style.color        = "#901C1C";
-        previous.style.cursor       = "pointer";
-        previous.classList.add      = "previous";
+        previous.innerHTML = '<i class="fas fa-chevron-left" title="image précédente"></i>';
+        previous.style.position = "absolute";
+        previous.style.top = "47%";
+        previous.style.left = "16%"; 
+        previous.style.fontSize = "40px"; 
+        previous.style.color = "#901C1C";
+        previous.style.cursor = "pointer";
+        previous.classList.add = "previous";
         previous.setAttribute("title", "Image précédente");
 
         next.innerHTML = '<i class="fas fa-chevron-right" title="image suivante"></i>';

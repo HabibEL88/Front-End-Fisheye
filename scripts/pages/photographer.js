@@ -39,6 +39,9 @@ function getProfile() {
                 buildGallery(pictures); 
                 getSortFactory();  
 
+                // Affiche le compteur total de likes
+                getTotalLikes(pictures); 
+
                 // Affiche la lightbox 
                 const lightboxModel = lightboxFactory(photographer);
                 lightboxModel.getLightboxDOM();

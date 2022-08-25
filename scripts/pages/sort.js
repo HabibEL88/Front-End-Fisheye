@@ -46,6 +46,7 @@ function getSortFactory() {
     popularityBloc.style.cursor = "pointer"; 
     popularityBloc.style.position = "relative";
     popularityBloc.style.paddingLeft = "10px";  
+    popularityBloc.style.borderRadius = "5px 5px 0 0"
 
     popularity.style.height = "100%";
     popularity.style.width = "95%";
@@ -85,6 +86,7 @@ function getSortFactory() {
     titleSort.style.cursor = "pointer";
     titleSort.style.paddingLeft = "10px"; 
     titleSort.style.display = "none";
+    titleSort.style.borderRadius = "0 0 5px 5px "
     titleSort.classList.add("titleSort");
 
     // Ouverture et fermeture du bouton de tri

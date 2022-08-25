@@ -39,7 +39,7 @@ label.forEach((label) => {
 
 myInputs.forEach((myInputs) => {
   myInputs.style.height = "60px";
-  myInputs.style.height = "60px";  
+  myInputs.style.width = "100%";
   myInputs.style.marginBottom = "10px";
   myInputs.style.fontSize = "25px";
   myInputs.style.borderRadius = "5px";
