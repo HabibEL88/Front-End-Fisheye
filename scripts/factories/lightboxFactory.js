@@ -77,10 +77,10 @@ function lightboxFactory(data) {
             lightbox.style.display = "block";
             lightbox.setAttribute("aria-hidden", "false");
             main.setAttribute("aria-hidden", "true");
+            lightbox.focus();
         }
 
         const medias = document.querySelectorAll(".galleryLink");
-        console.debug(medias);
         for (let i = 0; i < medias.length; i++) {
             mediaLink = medias[i];
 
@@ -121,8 +121,6 @@ function lightboxFactory(data) {
                         displayMedia();
                     })
                 }
-
-                previousMedia();
                 
                 // Affiche le média suivant
                 function nextMedia() {
@@ -134,9 +132,7 @@ function lightboxFactory(data) {
                         displayMedia();
                     })
                 }
-
-                nextMedia();
-
+                
                 // Fermeture de la ligtbox
                 function closeLightbox() {
                     closeBtn.addEventListener("click", () => {
