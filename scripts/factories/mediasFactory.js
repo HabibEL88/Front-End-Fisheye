@@ -15,12 +15,13 @@ function mediasFactory(data) {
         const buttonHeart = document.createElement("button");
         
         figure.style.marginBottom = "40px";
-        figure.style.width = "350px";
+        figure.style.width = "450px";
         
         const mediaLink = document.createElement('button');
         mediaLink.classList.add("galleryLink");
-        mediaLink.style.width = "350px";
-        mediaLink.style.height = "300px";
+        mediaLink.style.width = "450px";
+        mediaLink.style.height = "450px";
+        mediaLink.style.borderStyle = "none";
         // mediaLink.setAttribute('onClick', 'displayLightbox()');
         
         const mediaCaption = document.createElement('figcaption');
@@ -65,8 +66,8 @@ function mediasFactory(data) {
             img.setAttribute("src", mediaImage);
             img.setAttribute("alt", title);
             img.classList.add("currentMedia");
-            img.style.width = "350px";
-            img.style.height = "300px";
+            img.style.width = "450px";
+            img.style.height = "450px";
             img.style.borderRadius = "5px";
             img.style.objectFit = "cover";
             img.style.cursor = "pointer";
@@ -76,8 +77,8 @@ function mediasFactory(data) {
         if(video != undefined) {
             const vid = document.createElement('video');
             vid.className = 'vid';
-            vid.style.width = "350px";
-            vid.style.height = "300px";
+            vid.style.width = "450px";
+            vid.style.height = "450px";
             vid.style.borderRadius = "5px";
             vid.style.objectFit = "cover";
             vid.style.cursor = "pointer";
