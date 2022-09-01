@@ -52,7 +52,7 @@ myInputs.forEach((myInputs) => {
 function displayModal() {
   modal.style.display = "block";
   main.style.filter = "blur(5px)";
-  submitBtn.focus();
+  modal.focus();
   modal.setAttribute("aria-hidden", "false");
   main.setAttribute("aria-hidden", "true");
 }

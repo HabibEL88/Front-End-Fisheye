@@ -91,8 +91,8 @@ function getSortFactory() {
 
     // Ouverture et fermeture du bouton de tri
     sortList.addEventListener("mouseover", () => {
-        dateSort.style.display = "block";
-        titleSort.style.display = "block";
+        dateSort.style.display = "flex";
+        titleSort.style.display = "flex";
     });
 
     sortList.addEventListener("mouseleave", () => {

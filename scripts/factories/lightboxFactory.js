@@ -12,7 +12,7 @@ function lightboxFactory(data) {
 
         /*previous.className = "previous fas fa-chevron-left";
         previous.setAttribute("title", "Image précédente");*/
-        previous.innerHTML = '<i class="fas fa-chevron-left" title="image précédente"></i>';
+        previous.innerHTML = '<button><i class="fas fa-chevron-left" title="image précédente"></i></button>';
         previous.style.position = "absolute";
         previous.style.top = "47%";
         previous.style.left = "16%"; 
@@ -22,7 +22,7 @@ function lightboxFactory(data) {
         previous.classList.add = "previous";
         previous.setAttribute("title", "Image précédente");
 
-        next.innerHTML = '<i class="fas fa-chevron-right" title="image suivante"></i>';
+        next.innerHTML = '<button><i class="fas fa-chevron-right" title="image suivante"></i></button>';
         next.style.position = "absolute";
         next.style.top = "47%"; 
         next.style.right = "16%";  
@@ -32,7 +32,7 @@ function lightboxFactory(data) {
         next.classList.add = "next"; 
         next.setAttribute("title", "Image suivante");
 
-        closeBtn.innerHTML = '<i class="fas fa-times" title="Fermer la lightbox"></i>';
+        closeBtn.innerHTML = '<button><i class="fas fa-times" title="Fermer la lightbox"></i></button>';
         closeBtn.style.position = "absolute";
         closeBtn.style.top = "6%";
         closeBtn.style.right = "16%";
@@ -112,35 +112,40 @@ function lightboxFactory(data) {
 
                 // Affiche le média précédent
                 function previousMedia() {
-                    previous.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        selectedMedia.classList.remove("selected");
-                        i--;
-                        selectedMedia = medias[i].querySelector(".currentMedia");
-                        selectedMedia.classList.add("selected");
-                        displayMedia();
-                    })
+                    selectedMedia.classList.remove("selected");
+                    i--;
+                    selectedMedia = medias[i].querySelector(".currentMedia");
+                    selectedMedia.classList.add("selected");
+                    displayMedia();
                 }
+                previous.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    previousMedia();
+                })
                 
                 // Affiche le média suivant
                 function nextMedia() {
-                    next.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        selectedMedia.classList.remove("selected");
-                        i++;
-                        selectedMedia = medias[i].querySelector(".currentMedia");
-                        displayMedia();
-                    })
+                    selectedMedia.classList.remove("selected");
+                    i++;
+                    selectedMedia = medias[i].querySelector(".currentMedia");
+                    selectedMedia.classList.add("selected");
+                    displayMedia();
                 }
-                
+                next.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    nextMedia();
+                })
+
                 // Fermeture de la ligtbox
                 function closeLightbox() {
-                    closeBtn.addEventListener("click", () => {
-                        lightbox.style.display = "none";
-                        lightbox.setAttribute("aria-hidden", "true");
-                        main.setAttribute("aria-hidden", "false");
-                    })
+                    lightbox.style.display = "none";
+                    lightbox.setAttribute("aria-hidden", "true");
+                    main.setAttribute("aria-hidden", "false");
                 }
+                closeBtn.addEventListener("click", () => {
+                    e.preventDefault();
+                    closeLightbox();
+                })
 
                 // Accessibilité Lightbox
                 window.addEventListener("keydown", (e) => {
@@ -149,26 +154,16 @@ function lightboxFactory(data) {
                 
                     if (lightbox.style.display = "block") {
                         if (keyCode === 27) {
-                            lightbox.style.display = "none";
+                            closeLightbox()  
                         }
                         else if (keyCode === 37) {
-                            selectedMedia.classList.remove("selected");
-                            i--;
-                            selectedMedia = medias[i].querySelector(".currentMedia");
-                            selectedMedia.classList.add("selected");
-                            displayMedia();
+                            previousMedia();
                         }
                         else if (keyCode === 39) {
-                            selectedMedia.classList.remove("selected");
-                            i++;
-                            selectedMedia = medias[i].querySelector(".currentMedia");
-                            displayMedia();
+                            nextMedia();
                         }
                     }
                 });
-
-                closeLightbox();
-                   
             });
         }
         
