@@ -115,3 +115,11 @@ form {
 form label {
     display: block;
 }
+
+button{
+    background: none;
+    border: none;
+    font-size: 40px;
+    color: rgb(144, 28, 28);
+    cursor: pointer;
+}

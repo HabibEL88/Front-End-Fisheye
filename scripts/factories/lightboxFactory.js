@@ -29,7 +29,7 @@ function lightboxFactory(data) {
         next.style.fontSize = "40px";
         next.style.color = "#901C1C";
         next.style.cursor = "pointer";
-        next.classList.add = "next"; 
+        next.classList.add = "next";
         next.setAttribute("title", "Image suivante");
 
         closeBtn.innerHTML = '<button><i class="fas fa-times" title="Fermer la lightbox"></i></button>';
