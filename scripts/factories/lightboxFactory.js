@@ -154,7 +154,7 @@ function lightboxFactory(data) {
                 
                     if (lightbox.style.display = "block") {
                         if (keyCode === 27) {
-                            closeLightbox()  
+                            closeLightbox()
                         }
                         else if (keyCode === 37) {
                             previousMedia();
