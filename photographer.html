@@ -20,17 +20,30 @@
   <body>
     <header>
       <a href="index.html"> 
-        <img src="assets/images/logo.png" class="logo" alt="FishEye logo and Hompage" aria-label="Logo Fisheye" />        
+        <img src="assets/images/logo.png" class="logo" alt="FishEye Home page" aria-label="Logo Fisheye" />        
       </a>
     </header>
     
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" alt="Contact Me" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
       </div>
+      
+      <div class="sort">
+        <label for="sort-select">Trier par</label>
+        <select name="sort-select"> 
+          <option value="Popularité">Popularité</option>
+          <option value="Date">Date</option>
+          <option value="Titre">Titre</option>
+        </select>
+      </div>
+
       <div class="photograph-medias"></div>
+
+
     </main>
     
+
     <div class="lightbox" role="dialog" aria-describedby="Lightbox" style="display:none;"></div> 
     
     <div id="contact_modal" role="dialog" aria-describedby="Envoyer un message">
@@ -39,25 +52,25 @@
         <!--------------------------FORMULAIRE---------------------->
         <div class="contact-header">
           <h2 class="contact-title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" class="close-modale" alt="Icône Fermer"/>
+          <img src="assets/icons/close.svg" onclick="closeModal()" class="close-modale" alt="Icône Fermer" aria-label="Close Contact Form"/>
         </div>
         
 				<form action="index.html" name="form">
           <div role="group" aria-labelledby="Coordonnées">
             <label for="firstname" class="firstname">Prénom</label> 
-            <input type="text" name="firstname" id="firstname" class="input-form" aria-required="true"/>
+            <input type="text" name="firstname" id="firstname" class="input-form" aria-label="Prénom" aria-required="true"/>
             <span class="error-firstname"></span>
             
             <label for="lastname" class="lastname">Nom</label>
-            <input type="text" name="lastname" id="lastname" class="input-form" aria-required="true">
+            <input type="text" name="lastname" id="lastname" class="input-form" aria-label="Nom" aria-required="true">
             <span class="error-lastname"></span>
             
             <label for="email" class="email">Email</label>
-            <input type="text" name="email" id="email" class="input-form" aria-required="true">
+            <input type="text" name="email" id="email" class="input-form" aria-label="Email" aria-required="true">
             <span class="error-email"></span>
             
             <label for="textarea" class="textarea">Votre message</label>
-            <textarea name="textarea" id="textarea" aria-required="true"></textarea>
+            <textarea name="textarea" id="textarea" aria-label="Votre message" aria-required="true"></textarea>
             <span class="error-textarea"></span>
           </div>
           

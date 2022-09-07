@@ -32,7 +32,10 @@ form div {
 .logo {
     height: 50px;
 }
-
+#main{
+    display: flex;
+    flex-direction: column;
+}
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -40,6 +43,7 @@ form div {
     display: flex;
     justify-content: space-between;
     padding: 0 50px;
+    order: 1;
 }
 
 .contact_button {
@@ -92,6 +96,7 @@ form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    order: 3;
 }
 
 .vid + img{
@@ -122,4 +127,29 @@ button{
     font-size: 40px;
     color: rgb(144, 28, 28);
     cursor: pointer;
+}
+.sort{
+    order: 2;
+}
+
+label[for="sort-select"]{
+    border: solid 1px red;
+    height: 50px;
+    width: 80px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+select[name="sort-select"]{
+    font-size: 18px;
+    height: 50px;
+    width: 170px;
+    line-height: 50px;
+    background: rgb(144, 28, 28);
+    color: white;
+    cursor: pointer;
+    position: relative;
+    padding-left: 10px;
+    border-radius: 5px 5px 0px 0px;
 }

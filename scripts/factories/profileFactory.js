@@ -30,6 +30,7 @@ function profileFactory(data) {
         photographerName.textContent = name;
         photographerName.style.fontSize = "64px";
         photographerName.style.color = "#D3573C";
+        
 
         photographerCity.textContent = city + ', ' + country; 
         photographerCity.style.fontSize = "24px";
