@@ -74,97 +74,120 @@ function lightboxFactory(data) {
 
         // Ouverture de la lightbox
         function openLightbox() {
+            console.log('caca2')
             lightbox.style.display = "block";
             lightbox.setAttribute("aria-hidden", "false");
             main.setAttribute("aria-hidden", "true");
             lightbox.focus();
         }
 
+        console.log('here')
+
+        // Affiche le média sélectionné
+        function displayMedia(selectedMedia) {
+            img.src = selectedMedia.src; 
+            img.alt = selectedMedia.alt;
+            titleMedia.textContent = selectedMedia.alt;
+
+            if (typeof selectedMedia.alt === "undefined") {
+                img.replaceWith(vid);
+                vid.src = selectedMedia.src;
+                vid.alt = selectedMedia.alt; 
+                titleMedia.textContent = "Wild horses in the mountains";
+                vid.play();
+            }
+            else {
+                vid.replaceWith(img);
+            }
+        }
+
+        // Affiche le média précédent
+        function previousMedia(e) {
+            console.log(e.target)
+            console.log(selectedMedia)
+            console.log(pictures.indexOf(selectedMedia.src, 0))
+            selectedMedia.classList.remove("selected");
+
+            selectedMedia = medias[i].querySelector(".currentMedia");
+            selectedMedia.classList.add("selected");
+            displayMedia();
+        }
+        previous.addEventListener("click", (e) => {
+            e.preventDefault();
+            previousMedia(e);
+        })
+
+        // Affiche le média suivant
+        function nextMedia() {
+            selectedMedia.classList.remove("selected");
+
+            console.log(sources.indexOf(selectedMedia.src, 0));
+            currentIndex = (sources.indexOf(selectedMedia.src, 0)) + 1;
+            console.log(sources[currentIndex])
+            console.log(document.querySelectorAll(`[src="http://localhost:5500/assets/medias/Sport_Next_Hold.jpg"]`))
+            selectedMedia = medias[i].querySelector(".currentMedia");
+            selectedMedia.classList.add("selected");
+            displayMedia();
+        }
+        next.addEventListener("click", (e) => {
+            e.preventDefault();
+            nextMedia();
+        })
+
         const medias = document.querySelectorAll(".galleryLink");
+        console.log(medias)
+        let sources = [];
         for (let i = 0; i < medias.length; i++) {
             mediaLink = medias[i];
+
+            console.log(mediaLink.children[0].src)
+            sources.push(mediaLink.children[0].src);
 
             mediaLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 openLightbox();
-                selectedMedia = medias[i].querySelector(".currentMedia");
+                console.log(e.target)
+
+                selectedMedia = e.target
+                console.log(selectedMedia)
                 selectedMedia.classList.add("selected");
 
-                // Affiche le média sélectionné
-                function displayMedia() {
-                    img.src = selectedMedia.src; 
-                    img.alt = selectedMedia.alt;
-                    titleMedia.textContent = selectedMedia.alt;
-
-                    if (typeof selectedMedia.alt === "undefined") {
-                        img.replaceWith(vid);
-                        vid.src = selectedMedia.src;
-                        vid.alt = selectedMedia.alt; 
-                        titleMedia.textContent = "Wild horses in the mountains";
-                        vid.play();
-                    }
-                    else {
-                        vid.replaceWith(img);
-                    }
-                }
-
-                displayMedia();
-
-                // Affiche le média précédent
-                function previousMedia() {
-                    selectedMedia.classList.remove("selected");
-                    i--;
-                    selectedMedia = medias[i].querySelector(".currentMedia");
-                    selectedMedia.classList.add("selected");
-                    displayMedia();
-                }
-                previous.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    previousMedia();
-                })
+                displayMedia(selectedMedia);
+            })
                 
-                // Affiche le média suivant
-                function nextMedia() {
-                    selectedMedia.classList.remove("selected");
-                    i++;
-                    selectedMedia = medias[i].querySelector(".currentMedia");
-                    selectedMedia.classList.add("selected");
-                    displayMedia();
-                }
-                next.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    nextMedia();
-                })
+                
 
                 // Fermeture de la ligtbox
                 function closeLightbox() {
+                    selectedMedia.classList.remove("selected");
                     lightbox.style.display = "none";
                     lightbox.setAttribute("aria-hidden", "true");
                     main.setAttribute("aria-hidden", "false");
                 }
-                closeBtn.addEventListener("click", () => {
+                closeBtn.addEventListener("click", (e) => {
                     e.preventDefault();
                     closeLightbox();
                 })
 
                 // Accessibilité Lightbox
-                window.addEventListener("keydown", (e) => {
+                document.addEventListener("keydown", (e) => {
                     const keyCode = e.key;
-                    if (!keyCode) return;
-                
-                    if (lightbox.style.display = "block") {
-                        if (keyCode === 27) {
-                            closeLightbox()
-                        }
-                        else if (keyCode === 37) {
-                            previousMedia();
-                        }
-                        else if (keyCode === 39) {
-                            nextMedia();
+
+                    if (lightbox.style.display == "block") {
+                        switch (keyCode) {
+                            case "Escape":
+                                closeLightbox()
+                                break;
+                            case "ArrowLeft":
+                                previousMedia();
+                                break;
+                            case "Arrowright":
+                                nextMedia();
+                                break;
+                            default: break;
                         }
                     }
                 });
-            });
         }
         
         lightbox.appendChild(container);

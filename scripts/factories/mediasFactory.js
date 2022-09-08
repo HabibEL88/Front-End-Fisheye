@@ -22,7 +22,6 @@ function mediasFactory(data) {
         mediaLink.style.width = "450px";
         mediaLink.style.height = "450px";
         mediaLink.style.borderStyle = "none";
-        // mediaLink.setAttribute('onClick', 'displayLightbox()');
         
         const mediaCaption = document.createElement('figcaption');
         mediaCaption.classList.add("figcaption"); 

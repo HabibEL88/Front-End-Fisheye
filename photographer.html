@@ -26,7 +26,10 @@
     
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" alt="Contact Me" aria-label="Contact Me" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" 
+        alt="Contact Me" 
+        aria-label="Contact Me" 
+        onclick="displayModal()">Contactez-moi</button>
       </div>
       
       <div class="sort">
@@ -52,10 +55,18 @@
         <!--------------------------FORMULAIRE---------------------->
         <div class="contact-header">
           <h2 class="contact-title">Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" class="close-modale" alt="Icône Fermer" aria-label="Close Contact Form"/>
+          <button
+              type="button"
+              class="close-modale"
+              onclick="closeModal()"
+              alt="Icône Fermer"
+              aria-label="Close Contact Form"
+            >
+              <span aria-hidden="true">&times;</span> <!-- code ASCII POUR CROIX-->
+            </button>
         </div>
         
-				<form action="index.html" name="form">
+				<form action="index.html" name="form" id='modal'>
           <div role="group" aria-labelledby="Coordonnées">
             <label for="firstname" class="firstname">Prénom</label> 
             <input type="text" name="firstname" id="firstname" class="input-form" aria-label="Prénom" aria-required="true"/>

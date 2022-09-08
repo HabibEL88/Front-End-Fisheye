@@ -15,6 +15,7 @@ function getProfile() {
     .then((res) => res.json())
     .then((data) => {
         const photographers = data.photographers;
+        globalThis.photographers = photographers;
         const medias = data.media;
         const photographHeader = document.querySelector(".photograph-header");
 
@@ -23,6 +24,7 @@ function getProfile() {
         let photographerId = verifyUrl.get('id');
 
         pictures = medias.filter(obj => obj.photographerId == photographerId);
+        console.log(pictures)
         photographers.forEach((photographer) => {
             // Verifie si l'url contient l'id du photographe
             if (photographer.id == photographerId) {
