@@ -150,7 +150,6 @@ button{
 }
 
 label[for="sort-select"]{
-    border: solid 1px red;
     height: 50px;
     width: 80px;
     font-size: 18px;

@@ -77,7 +77,7 @@ function lightboxFactory(data) {
             lightbox.style.display = "block";
             lightbox.setAttribute("aria-hidden", "false");
             main.setAttribute("aria-hidden", "true");
-            lightbox.focus();
+            closeBtn.focus();
         }
 
         // Affiche le média sélectionné
@@ -103,17 +103,10 @@ function lightboxFactory(data) {
             selectedMedia.classList.remove("selected");
 
             currentIndex = (sources.indexOf(clean_uri(selectedMedia.src), 0)) - 1;
-
-            console.log('here')
-            console.log(currentIndex)
             if (currentIndex < 0){
-                
                 currentIndex = sources.length - 1;
-                console.log(currentIndex)
-                console.log(sources[currentIndex - 1])
             }
 
-            console.log(document.querySelector(`[src="${sources[currentIndex]}"]`))
             selectedMedia = document.querySelector(`[src="${sources[currentIndex]}"]`)
             selectedMedia.classList.add("selected");
             displayMedia(selectedMedia);
@@ -127,13 +120,8 @@ function lightboxFactory(data) {
         // Affiche le média suivant
         function nextMedia() {
             selectedMedia.classList.remove("selected");
-
-            console.log("here")
-
             currentIndex = (sources.indexOf(clean_uri(selectedMedia.src), 0)) + 1;
-
             if (currentIndex >= sources.length){
-                console.log('here')
                 currentIndex = 0;
             }
 
@@ -171,21 +159,18 @@ function lightboxFactory(data) {
         const medias = document.querySelectorAll(".galleryLink");
         let sources = [];
 
-        console.log(sources);
-
         for (let i = 0; i < medias.length; i++) {
             mediaLink = medias[i];
-
-            console.log(mediaLink.children[0].src)
             sources.push(clean_uri(mediaLink.children[0].src));
-
             mediaLink.addEventListener("click", (e) => {
+                console.debug("click");
                 e.preventDefault();
                 openLightbox();
 
                 selectedMedia = e.target
+                let img = selectedMedia.querySelector("img");
+                if (img) selectedMedia = img;
                 selectedMedia.classList.add("selected");
-
                 displayMedia(selectedMedia);
             })
         }
