@@ -39,7 +39,7 @@ function getProfile() {
 
                 // Affiche la gallerie d'images 
                 buildGallery(pictures); 
-                getSortFactory();  
+                getSortFactory(data);  
 
                 // Affiche le compteur total de likes
                 buildTotalLikes(pictures); 

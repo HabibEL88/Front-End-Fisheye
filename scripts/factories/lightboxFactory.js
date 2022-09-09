@@ -74,14 +74,11 @@ function lightboxFactory(data) {
 
         // Ouverture de la lightbox
         function openLightbox() {
-            console.log('caca2')
             lightbox.style.display = "block";
             lightbox.setAttribute("aria-hidden", "false");
             main.setAttribute("aria-hidden", "true");
             lightbox.focus();
         }
-
-        console.log('here')
 
         // Affiche le média sélectionné
         function displayMedia(selectedMedia) {
@@ -102,92 +99,95 @@ function lightboxFactory(data) {
         }
 
         // Affiche le média précédent
-        function previousMedia(e) {
-            console.log(e.target)
-            console.log(selectedMedia)
-            console.log(pictures.indexOf(selectedMedia.src, 0))
+        function previousMedia() {
             selectedMedia.classList.remove("selected");
 
-            selectedMedia = medias[i].querySelector(".currentMedia");
+            currentIndex = (sources.indexOf(clean_uri(selectedMedia.src), 0)) - 1;
+
+            console.log('here')
+            console.log(currentIndex)
+            if (currentIndex < 0){
+                
+                currentIndex = sources.length - 1;
+                console.log(currentIndex)
+                console.log(sources[currentIndex - 1])
+            }
+
+            console.log(document.querySelector(`[src="${sources[currentIndex]}"]`))
+            selectedMedia = document.querySelector(`[src="${sources[currentIndex]}"]`)
             selectedMedia.classList.add("selected");
-            displayMedia();
+            displayMedia(selectedMedia);
         }
+
         previous.addEventListener("click", (e) => {
             e.preventDefault();
-            previousMedia(e);
+            previousMedia();
         })
 
         // Affiche le média suivant
         function nextMedia() {
             selectedMedia.classList.remove("selected");
 
-            console.log(sources.indexOf(selectedMedia.src, 0));
-            currentIndex = (sources.indexOf(selectedMedia.src, 0)) + 1;
-            console.log(sources[currentIndex])
-            console.log(document.querySelectorAll(`[src="http://localhost:5500/assets/medias/Sport_Next_Hold.jpg"]`))
-            selectedMedia = medias[i].querySelector(".currentMedia");
+            console.log("here")
+
+            currentIndex = (sources.indexOf(clean_uri(selectedMedia.src), 0)) + 1;
+
+            if (currentIndex >= sources.length){
+                console.log('here')
+                currentIndex = 0;
+            }
+
+            selectedMedia = document.querySelector(`[src="${sources[currentIndex]}"]`)
             selectedMedia.classList.add("selected");
-            displayMedia();
+            displayMedia(selectedMedia);
         }
+
         next.addEventListener("click", (e) => {
             e.preventDefault();
             nextMedia();
         })
 
+        function clean_uri(src) {
+            let source = new URL(src).pathname
+
+            return source.slice(1, source.length);
+        }
+
+        // Accessibilité Lightbox
+        document.addEventListener("keydown", keydown_lightbox.bind(event, lightbox, closeLightbox, nextMedia, previousMedia), false);
+
+        // Fermeture de la ligtbox
+        function closeLightbox() {
+            selectedMedia.classList.remove("selected");
+            lightbox.style.display = "none";
+            lightbox.setAttribute("aria-hidden", "true");
+            main.setAttribute("aria-hidden", "false");
+        }
+        closeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            closeLightbox();
+        })
+
         const medias = document.querySelectorAll(".galleryLink");
-        console.log(medias)
         let sources = [];
+
+        console.log(sources);
+
         for (let i = 0; i < medias.length; i++) {
             mediaLink = medias[i];
 
             console.log(mediaLink.children[0].src)
-            sources.push(mediaLink.children[0].src);
+            sources.push(clean_uri(mediaLink.children[0].src));
 
             mediaLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 openLightbox();
-                console.log(e.target)
 
                 selectedMedia = e.target
-                console.log(selectedMedia)
                 selectedMedia.classList.add("selected");
 
                 displayMedia(selectedMedia);
             })
-                
-                
-
-                // Fermeture de la ligtbox
-                function closeLightbox() {
-                    selectedMedia.classList.remove("selected");
-                    lightbox.style.display = "none";
-                    lightbox.setAttribute("aria-hidden", "true");
-                    main.setAttribute("aria-hidden", "false");
-                }
-                closeBtn.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    closeLightbox();
-                })
-
-                // Accessibilité Lightbox
-                document.addEventListener("keydown", (e) => {
-                    const keyCode = e.key;
-
-                    if (lightbox.style.display == "block") {
-                        switch (keyCode) {
-                            case "Escape":
-                                closeLightbox()
-                                break;
-                            case "ArrowLeft":
-                                previousMedia();
-                                break;
-                            case "Arrowright":
-                                nextMedia();
-                                break;
-                            default: break;
-                        }
-                    }
-                });
         }
         
         lightbox.appendChild(container);

@@ -1,5 +1,5 @@
 // AFFICHE LA LISTE DE TRI PAR CATEGORIES 
-function getSortFactory() {
+function getSortFactory(data) {
 
     const select = document.querySelectorAll('[name="sort-select"]')[0];
    
@@ -22,11 +22,12 @@ function getSortFactory() {
 
         buildGallery(pictures);
 
-        photographers.map( (o) => { // equivaut au .for (à etudier) //
-            const lightboxModel = lightboxFactory(o);
+        // equivaut au .for (à etudier) //
+            let toReset = document.getElementsByClassName("lightbox")[0];
+            toReset.innerHTML = '';
+            document.removeEventListener("keydown", keydown_lightbox, false);
+            const lightboxModel = lightboxFactory(data);
             lightboxModel.getLightboxDOM();
-        })
-        
     });
 
 }
