@@ -22,12 +22,14 @@ function getSortFactory(data) {
 
         buildGallery(pictures);
 
-        // equivaut au .for (à etudier) //
+        
             let toReset = document.getElementsByClassName("lightbox")[0];
             toReset.innerHTML = '';
             document.removeEventListener("keydown", keydown_lightbox, false);
             const lightboxModel = lightboxFactory(data);
             lightboxModel.getLightboxDOM();
+
+            console.debug("=================")
     });
 
 }

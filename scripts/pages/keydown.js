@@ -1,4 +1,6 @@
 function keydown_lightbox(lightbox, closeLightbox, nextMedia, previousMedia, e) {
+    // e.stopImmediatePropagation();
+    // e.preventDefault();
     const keyCode = e.key;
 
     // console.log('lightbox: ' + lightbox)

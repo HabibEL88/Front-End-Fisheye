@@ -1,3 +1,4 @@
+let keydownlistener = undefined;
 function lightboxFactory(data) {
     const { image , video, title } = data;
 
@@ -101,8 +102,11 @@ function lightboxFactory(data) {
         // Affiche le média précédent
         function previousMedia() {
             selectedMedia.classList.remove("selected");
-
+            console.debug("previousMedia");
+            console.debug(sources);
+            console.debug(selectedMedia);
             currentIndex = (sources.indexOf(clean_uri(selectedMedia.src), 0)) - 1;
+            console.debug(currentIndex);
             if (currentIndex < 0){
                 currentIndex = sources.length - 1;
             }
@@ -142,7 +146,14 @@ function lightboxFactory(data) {
         }
 
         // Accessibilité Lightbox
-        document.addEventListener("keydown", keydown_lightbox.bind(event, lightbox, closeLightbox, nextMedia, previousMedia), false);
+        callback = (e) => {
+            keydown_lightbox(lightbox, closeLightbox, nextMedia, previousMedia, e)
+        };
+        if (keydownlistener){
+            document.removeEventListener("keydown", keydownlistener);
+        }
+        document.addEventListener("keydown", callback);
+        keydownlistener = callback;
 
         // Fermeture de la ligtbox
         function closeLightbox() {
@@ -158,12 +169,11 @@ function lightboxFactory(data) {
 
         const medias = document.querySelectorAll(".galleryLink");
         let sources = [];
-
+        
         for (let i = 0; i < medias.length; i++) {
             mediaLink = medias[i];
             sources.push(clean_uri(mediaLink.children[0].src));
             mediaLink.addEventListener("click", (e) => {
-                console.debug("click");
                 e.preventDefault();
                 openLightbox();
 
@@ -175,6 +185,7 @@ function lightboxFactory(data) {
             })
         }
         
+        console.debug(sources);
         lightbox.appendChild(container);
         container.appendChild(titleMedia);
         lightbox.appendChild(previous);
