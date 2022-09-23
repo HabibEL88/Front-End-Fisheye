@@ -34,13 +34,15 @@ function photographerFactory(data) {
         photographerPrice.style.fontSize = "9px"; 
     
         article.appendChild(link);
-        article.appendChild(photographerName);
         article.appendChild(photographerCity);
         article.appendChild(photographerTagline);
         article.appendChild(photographerPrice);
         link.appendChild(img);
+        link.appendChild(photographerName);
         
         return (article);
     }
     return { name, picture, city, country, tagline, price, id, getUserCardDOM}
+
+    
 }
